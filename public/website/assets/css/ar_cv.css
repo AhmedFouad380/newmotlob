@@ -2859,6 +2859,7 @@ iframe {
 }
 .div1-resume3 {
     background-color: #374454;
+
     -webkit-print-color-adjust: exact;
     width: 60%;
     height: 7px;
@@ -2943,12 +2944,16 @@ iframe {
     width: 100%;
     height: 100%;
     background-color: #EDEDEE;
+    -webkit-print-color-adjust: exact;
+
     padding-top: 19px;
     padding-bottom: 19px
 }
 .resume5-data {
     margin: 0 19px 0 19px;
     background-color: #fff;
+    -webkit-print-color-adjust: exact;
+
     border-radius: 18px;
     /* overflow: hidden;   */
     /* position: relative; */
@@ -3017,6 +3022,8 @@ iframe {
     display: block;
     height: 1px;
     background-color: #999B9D;
+    -webkit-print-color-adjust: exact;
+
     margin:  0 auto ;
     position: relative;
     margin-bottom: 15px;
@@ -3027,6 +3034,8 @@ iframe {
     display: block;
     height: 5px;
     background-color: #38A6C9;
+    -webkit-print-color-adjust: exact;
+
     margin:  0 auto ;
     border-radius: 5px;
     position: absolute;
@@ -3070,6 +3079,8 @@ iframe {
 }
 .resume5-data22 {
     background-color: #fff;
+    -webkit-print-color-adjust: exact;
+
     border-radius: 18px;
     padding: 15px;
     min-height: 283mm;
@@ -3084,12 +3095,16 @@ iframe {
     width: 100%;
     height: 1px;
     background-color: #999B9D;
+    -webkit-print-color-adjust: exact;
+
     position: relative;
 }
 .line-blue{
     width: 5%;
     height: 5px;
     background-color: #38A6C9;
+    -webkit-print-color-adjust: exact;
+
     border-radius: 5px;
     position: absolute;
     top: -2px;
