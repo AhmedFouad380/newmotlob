@@ -12,7 +12,7 @@
 
 </head>
 
-<body style="direction: ltr;">
+<body style="direction: ltr;" onload="window.print()">
 
 <!--  this is resume 5  -->
 

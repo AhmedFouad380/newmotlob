@@ -12,7 +12,7 @@
 
 </head>
 
-<body style="direction: rtl;">
+<body style="direction: rtl;" onload="window.print()"g>
 
 <!--  this is resume 5  -->
 
