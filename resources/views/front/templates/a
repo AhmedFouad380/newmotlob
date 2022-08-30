@@ -1,0 +1,80 @@
+                         <div class="maker-resume1 row">
+                             <h5>
+                                 سيرة <br>
+                                 ذاتية
+                             </h5>
+                             <h2>{{Auth::guard('web')->user()->info->firstname }} {{Auth::guard('web')->user()->info->lastname }}</h2>
+                             <p>{{Auth::guard('web')->user()->info->email }}</p>
+                             <p>{{Auth::guard('web')->user()->info->phone }}</p>
+
+                         </div>
+                         <div class="maker-resume2 row">
+                             <div class="col-md-2 word">
+                                 الموجز
+                             </div>
+                             <div class="col-md-10 words">
+                                 {!! Auth::guard('web')->user()->info->description  !!}
+                             </div>
+                         </div>
+                         <div class="maker-resume3 row">
+                             <div class="col-md-2 word">
+                                 التعليم
+                             </div>
+                             @foreach(Auth::guard('web')->user()->education as $key => $edu)
+                                 @if($key == 0)
+                             <div class="col-md-8 words">
+                                 {{$edu->name}}
+                             </div>
+                             <div class="col-md-2 words">
+                                 ( {{ \Carbon\Carbon::parse($edu->graduation_date)->format('Y') }})
+                             </div>
+                                 @else
+                                     <div class="col-md-2 word">
+
+                                     </div>
+
+                                     <div class="col-md-8 words">
+                                         {{$edu->name}}
+                                     </div>
+                                     <div class="col-md-2 words">
+                                         ( {{ \Carbon\Carbon::parse($edu->graduation_date)->format('Y') }})
+                                     </div>
+
+                                 @endif
+                             @endforeach
+
+                         </div>
+
+                         <div class="maker-resume4 row">
+                             @foreach(Auth::guard('web')->user()->Experience as $key => $data)
+                                 @if($key == 0)
+                                     <div class="col-md-2 word">
+                                         الخبرات
+                                     </div>
+
+                                     <div class="col-md-8 words">
+                                             {{$data->name}}  : في شركة {{$data->company}}
+
+                                     </div>
+                                     <div class="col-md-2 words">
+                                         ( {{ \Carbon\Carbon::parse($data->start_date)->format('Y')  }} \  {{ \Carbon\Carbon::parse($data->end_date)->format('Y')  }})
+                                     </div>
+                                 @else
+                                     <div class="col-md-2 word">
+
+                                     </div>
+
+                                     <div class="col-md-8 words">
+                                         {{$data->name}}  :  في شركة {{$data->company}}
+
+                                     </div>
+                                     <div class="col-md-2 words">
+                                         ( {{ \Carbon\Carbon::parse($data->start_date)->format('Y')  }} \  {{ \Carbon\Carbon::parse($data->end_date)->format('Y')  }})
+                                     </div>
+
+
+                                 @endif
+                             @endforeach
+
+
+                         </div>
