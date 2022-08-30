@@ -2957,7 +2957,7 @@ iframe {
     border-radius: 18px;
     /* overflow: hidden;   */
     /* position: relative; */
-    min-height: 283mm;
+    min-height: 276mm;
 
 }
 .image-clip {
@@ -3083,7 +3083,7 @@ iframe {
 
     border-radius: 18px;
     padding: 15px;
-    min-height: 283mm;
+    min-height: 276mm;
 }
 .experience5-h2 {
     text-transform: uppercase;
@@ -3149,7 +3149,7 @@ iframe {
 }
 .a4-width-6{
     width: 210mm;
-    height:297mm;
+    height:290mm;
     border: 1px solid #D4D4D4;
 }
 /*resume 5 end*/
