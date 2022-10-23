@@ -40,4 +40,17 @@ class Information extends Model
         return $this->belongsTo(Country::class, 'country_id');
     }
 
+    public function State()
+    {
+        return $this->belongsTo(State::class, 'state_id')->withDefault([
+            'name'=>''
+        ]);
+    }
+
+    public function Village()
+    {
+        return $this->belongsTo(Village::class, 'village_id')->withDefault([
+            'name'=>''
+        ]);
+    }
 }

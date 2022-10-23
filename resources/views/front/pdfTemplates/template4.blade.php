@@ -37,6 +37,9 @@
                         <div class="row">
                             <div class="col-md-2 col-lg-2 col-2">
                                 <div class="icon-yellow-4">
+                                    <span>
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                            </span>
                                             <span>
                                                 <i class="fa fa-phone" aria-hidden="true"></i>
                                             </span>
@@ -50,10 +53,14 @@
                             </div>
                             <div class="col-md-10 col-10 ">
                                 <div class="contact4-span">
+                                    <span>{{Auth::guard('web')->user()->birth_date}}</span>
                                     <span>{{Auth::guard('web')->user()->info->phone}}</span>
                                     <span>{{Auth::guard('web')->user()->info->email}}</span>
-                                    <span>{{Auth::guard('web')->user()->info->City->name}} -
-                                    {{Auth::guard('web')->user()->info->Country->name}}</span>
+                                    <span>{{Auth::guard('web')->user()->info->Country->name}} -
+                                    {{Auth::guard('web')->user()->info->City->name}}</span>
+                                    <span>{{Auth::guard('web')->user()->State->name}} -
+                                    {{Auth::guard('web')->user()->info->Village->name}}</span>
+
                                 </div>
                             </div>
                         </div>
@@ -147,29 +154,74 @@
 
 
                 </div>
+
+                @if(count(Auth::guard('web')->user()->Courses) >0)
+
+                    <div class="reference4 resume4-bottom ">
+                        <h4>المؤتمرات و الدورات :
+                        </h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Courses as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference">
+                                        <p>
+                                            @if($edu->type == 'course ') دورة @else مؤتمر  @endif : {{$edu->name}}
+                                        </p>
+                                        <p class="p2-reference"> التاريخ :  {{$edu->date}}</p>
+                                        <p>
+                                            اسم الشركة : {{$edu->company}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endif
+                @if(count(Auth::guard('web')->user()->Organization) >0)
+
+                    <div class="reference4 resume4-bottom ">
+                        <h4>المنظمات :</h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Organization as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference">
+                                        <p>  اسم الشركة : {{$edu->name }}</p>
+                                        <p class="p2-reference"> التاريخ :  {{$edu->date}}</p>
+                                        <p>
+                                            الدورة : {{$edu->job}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endif
                 @if(count(Auth::guard('web')->user()->Knows) >0)
 
-                <div class="reference4">
-                    <h4>المعرفيين</h4>
-                    <div class="row">
-                        @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
-                            <div class="col-md-6 col-6">
-                                <div class="border-reference reference4-lastspan ">
-                                    <span>  اسم الشركة : {{$edu->company }}</span>
-                                    <span class="p2-reference"> الاسم :  {{$edu->name}}</span>
-                                    <span>
-                                        المسمى الوظيفي : {{$edu->job_title}}
-                                    </span>
-                                    <span>
-                                        رقم الهاتف  :{{$edu->phone}}
-                                    </span>
+                    <div class="reference4 resume4-bottom">
+                        <h4> المعرفين :</h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference">
+                                        <p>  اسم الشركة : {{$edu->company }}</p>
+                                        <p class="p2-reference"> الاسم :  {{$edu->name}}</p>
+                                        <p>
+                                            المسمى الوظيفي : {{$edu->job_title}}
+                                        </p>
+                                        <p>
+                                            رقم الهاتف  :{{$edu->phone}}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
 
+                        </div>
                     </div>
-                </div>
                 @endif
+
 
             </div>
 

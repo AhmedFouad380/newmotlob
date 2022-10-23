@@ -46,16 +46,16 @@
                         </div>
                         <div class="form-group col-md-6 col-6">
                             <label> الاسم  </label>
-                            <input type="text" class="form-control" required name="name" placeholder="اسم ">
+                            <input type="text" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  class="form-control"  name="name" placeholder="اسم ">
                         </div>
 
                         <div class="form-group col-md-6 col-6">
                             <label> الشركة</label>
-                            <input type="text" class="form-control" name="company" placeholder="اسم الشركة">
+                            <input type="text" class="form-control" name="company" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  placeholder="اسم الشركة">
                         </div>
                         <div class="form-group col-md-6 col-6">
                             <label>التاريخ </label>
-                            <input type="date" class="form-control" required name="date" placeholder="التاريخ">
+                            <input type="date" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="date" placeholder="التاريخ">
                         </div>
                     </div>
                     <div class="row">

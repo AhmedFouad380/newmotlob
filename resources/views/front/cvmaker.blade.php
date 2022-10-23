@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group col-md-4 col-12">
                             <label>  المسمى الوظيفي</label>
-                            <input type="text" required class="form-control"  value="{{Auth::guard('web')->user()->info->job_title}}" name="job_title" placeholder="المسمى الوظيفي">
+                            <input type="text" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  class="form-control"  value="{{Auth::guard('web')->user()->info->job_title}}" name="job_title" placeholder="المسمى الوظيفي">
                         </div>
                     </div>
                     <div class="row">
@@ -80,7 +80,7 @@
                             <label>  الدولة</label>
                             @inject('Countries','App\Models\Country')
 
-                            <select class="form-control" required id="country3" name="country_id">
+                            <select class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  id="country3" name="country_id">
                                 @if(Auth::guard('web')->user()->info->country_id)
                                 @foreach($Countries->where('is_active','active')->get() as $Country)
                                     <option @if(Auth::guard('web')->user()->info->country_id == $Country->id)  selected @endif value="{{$Country->id}}">{{$Country->name}} </option>
@@ -95,13 +95,11 @@
                         @inject('City','App\Models\City')
                         <div class="form-group col-md-4 col-6">
                             <label>  المحافظة</label>
-                            <select class="form-control"  required id="city3" name="city_id">
+                            <select class="form-control"  oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  id="city3" name="city_id">
                                 @if(Auth::guard('web')->user()->info->city_id)
-                                @if(Auth::guard('web')->user()->info->city_id)
-                                    <option value="{{Auth::guard('web')->user()->info->city_id}}">{{$City->find(Auth::guard('web')->user()->info->city_id)->name}}</option>
-                                @endif
+                                    <option value="{{Auth::guard('web')->user()->info->city_id}}">{{Auth::guard('web')->user()->info->City->name}}</option>
                                 @else
-                                        <option value="{{Auth::guard('web')->user()->city_id}}">{{$City->find(Auth::guard('web')->user()->city_id)->name}}</option>
+                                        <option value="{{Auth::guard('web')->user()->city_id}}">{{Auth::guard('web')->user()->info->City->name}}</option>
                                 @endif
                             </select>
                         </div>
@@ -110,13 +108,13 @@
                         <div class="form-group col-md-4 col-6">
                             <div class="form-group">
                                 <label for="state" >المركز *</label>
-                                <select class="form-control wizard-required" id="state2" name="state_id">
+                                <select class="form-control wizard-required" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  id="state2" name="state_id">
                                     @if(Auth::guard('web')->user()->info->state_id)
                                         @if(Auth::guard('web')->user()->info->state_id)
                                             <option value="{{Auth::guard('web')->user()->info->state_id}}">{{$State->find(Auth::guard('web')->user()->info->state_id)->name}}</option>
                                         @endif
                                     @else
-                                        <option value="{{Auth::guard('web')->user()->state_id}}">{{$State->find(Auth::guard('web')->user()->state_id)->name}}</option>
+                                        <option value="{{Auth::guard('web')->user()->state_id}}">{{Auth::guard('web')->user()->State->name}}</option>
                                     @endif
                                 </select>
                                 <div class="wizard-form-error"></div>
@@ -127,13 +125,13 @@
                         <div class="form-group col-md-4 col-6">
                             <div class="form-group">
                                 <label for="state" >القرية او الحي *</label>
-                                <select class="form-control wizard-required" id="village2" name="village_id">
+                                <select class="form-control wizard-required" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  id="village2" name="village_id">
                                     @if(Auth::guard('web')->user()->info->village_id)
                                         @if(Auth::guard('web')->user()->info->village_id)
-                                            <option value="{{Auth::guard('web')->user()->info->village_id}}">{{$Village->find(Auth::guard('web')->user()->info->village_id)->name}}</option>
+                                            <option value="{{Auth::guard('web')->user()->info->village_id}}">{{Auth::guard('web')->user()->Village->name}}</option>
                                         @endif
                                     @else
-                                        <option value="{{Auth::guard('web')->user()->village_id}}">{{$Village->find(Auth::guard('web')->user()->village_id)->name}}</option>
+                                        <option value="{{Auth::guard('web')->user()->village_id}}">{{Auth::guard('web')->user()->Village->name}}</option>
                                     @endif
                                 </select>
                                 <div class="wizard-form-error"></div>
@@ -145,6 +143,11 @@
                             <input type="text" class="form-control" name="address"  value="{{Auth::guard('web')->user()->info->address}}" placeholder="العنوان بالتفصيل">
                         </div>
 
+
+                        <div class="form-group col-md-4 col-12">
+                            <label>العنوان تفصيل 2  </label>
+                            <input type="text" class="form-control" name="address2"  value="{{Auth::guard('web')->user()->info->address2}}" placeholder=" العنوان بالتفصيل 2">
+                        </div>
                     </div>
 
 

@@ -476,6 +476,8 @@
                                             <select class="form-control" id="relationship" name="relationship">
                                                 <option value="single">اعزب </option>
                                                 <option value="married">متزوج </option>
+                                                <option value="widower">ارمل ( ـة)  </option>
+                                                <option value="absolute">مطلق( ـة)  </option>
                                             </select>
                                             <div class="wizard-form-error">
                                                 <div style="font-size: 13px">هذا الحقل مطلوب</div>
@@ -570,7 +572,7 @@
                                     </div>                                </div>
                                 <div class="form-group">
                                     <label  for="email">البريد الالكتروني  *</label>
-                                    <input type="email" class="form-control wizard-required" id="email" name="email">
+                                    <input type="email" class="form-control wizard-required emailCompany" id="emailCompany"  name="email">
                                     <div class="wizard-form-error">
                                         <div style="font-size: 13px">هذا الحقل مطلوب</div>
                                     </div>                                </div>
@@ -753,6 +755,13 @@
     @yield('js')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/js/intlTelInput-jquery.min.js"></script>
     <script>
+        $('#emailCompany').on('click','change',function () {
+         var   email =  document.getElementById('emailCompany').value;
+         if(email.includes('@yahoo') == true|| email.includes('@gmail') == true){
+             alert('البريد الالكتروني يجب ان يكون اميل شركة وليس جوجل او ياهو ')
+             document.getElementById('emailCompany').value = '';
+         }
+        })
 
         $('.nav-link1').click(function() {
 
@@ -1337,6 +1346,33 @@
                         alert(errorThrown);
                     }
                 })
+            })
+            $("#type").change(function () {
+                var value = $('#type').val();
+                var identity = $('#id_number').val();
+                var key = identity.substr(12, 1);
+                if(key % 2 == 0 ){
+
+                    $key1 = 1;
+
+                }else{
+                    $key1 = 2;
+
+                }
+                if( value % 2 == 0){
+                    $value2 =1;
+                }else {
+                    $value2 =2;
+
+                }
+                if($key1 == $value2){
+
+                }else{
+                    alert ("النوع غير صحيح ");
+
+                }
+
+
             })
 
 

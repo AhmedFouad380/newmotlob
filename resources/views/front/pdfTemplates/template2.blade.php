@@ -40,17 +40,26 @@
                     <div class="row">
                         <div class="col-md-2 col-2">
                             <div class="icon-blue">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <i class="fa fa-envelope icon-2" aria-hidden="true"></i>
-                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <i class="fa fa-user icon-2 " aria-hidden="true"></i>
+                                <i class="fa fa-phone icon-2" aria-hidden="true"></i>
+                                    <i class="fa fa-envelope icon-2" aria-hidden="true"></i>
+                                <i class="fa fa-home icon-2 " aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="col-md-10 col-10 ">
                             <div>
+                                <p class="p">{{ Auth::guard('web')->user()->birth_date }}</p>
                                 <p class="p">{{Auth::guard('web')->user()->info->phone}}</p>
                                 <p class="p">{{Auth::guard('web')->user()->info->email}}</p>
-                                <p class="p">{{Auth::guard('web')->user()->info->City->name}} -
-                                    {{Auth::guard('web')->user()->info->Country->name}}</p>
+                                <p class="p">
+                                    {{Auth::guard('web')->user()->info->Country->name}}  -
+                                    {{Auth::guard('web')->user()->info->City->name}}
+                                </p>
+                                <p class="p">
+                                    -{{Auth::guard('web')->user()->State->name}}
+                                    -{{Auth::guard('web')->user()->Village->name}}
+
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -86,6 +95,7 @@
                         <div class="blue-div"></div>
                     </div>
                 </div>
+
                 @if(Auth::guard('web')->user()->Experience->count() > 0 )
                 <div class="experience">
                     <h4>الخبرات:</h4>
@@ -175,30 +185,47 @@
                     @endforeach
                 </div>
                 @endif
-                @if(count(Auth::guard('web')->user()->Knows) >0)
-                <div class="interests">
-                    <h4>المعرفين
-                        :
-                    </h4>
-                    <div class="padding-interests">
-                        <div class="row">
-                            @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
+                @if(count(Auth::guard('web')->user()->Organization) >0)
+                    <div class="experience">
+                        <h4>المنظمات :</h4>
+                        @foreach(Auth::guard('web')->user()->Organization as $key => $edu)
 
-                            <div class="col-md-6 col-6">
-                                <p>  اسم الشركة : {{$edu->company }}</p>
-                                <p> الاسم :  {{$edu->name}}</p>
-                                <p>
-                                    المسمى الوظيفي : {{$edu->job_title}}
-                                </p>
-                                <p>
-                                    رقم الهاتف  :{{$edu->phone}}
-                                </p>
+                            <div>
+                                <span class="uppercase-span">
+                                    {{$edu->name}}
+                                    <br>
+                                    <b class="captalize-span">{{\Carbon\Carbon::parse($edu->date)->format('Y-m')}}</b>
+                                </span>
+                                <span class="light-size">{{$edu->job}}</span>
                             </div>
-                            @endforeach
+                        @endforeach
+                    </div>
+                @endif
 
+            @if(count(Auth::guard('web')->user()->Knows) >0)
+                    <div class="interests">
+                        <h4>المعرفين
+                            :
+                        </h4>
+                        <div class="padding-interests">
+                            <div class="row">
+                                @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
+
+                                    <div class="col-md-6 col-6">
+                                        <p>  اسم الشركة : {{$edu->company }}</p>
+                                        <p> الاسم :  {{$edu->name}}</p>
+                                        <p>
+                                            المسمى الوظيفي : {{$edu->job_title}}
+                                        </p>
+                                        <p>
+                                            رقم الهاتف  :{{$edu->phone}}
+                                        </p>
+                                    </div>
+                                @endforeach
+
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endif
 {{--                <div class="interests">--}}
 {{--                    <h4>المهارات</h4>--}}

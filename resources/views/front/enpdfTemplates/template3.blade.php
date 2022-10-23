@@ -48,13 +48,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="profile">
+                <div class="profile padding-60">
                     <h4>About me </h4>
                     <p>{!! Auth::guard('web')->user()->info->description !!}</p>
                 </div>
                 @if(Auth::guard('web')->user()->Experience->count() > 0 )
 
-                    <div class="experience experience-color">
+                    <div class="experience experience-color padding-60">
                         <h4>Experience</h4>
                         @foreach(Auth::guard('web')->user()->Experience as $key => $edu)
                             <div>
@@ -69,21 +69,22 @@
 
                     </div>
                 @endif
-                @if(count(Auth::guard('web')->user()->Knows) >0)
+                @if(count(Auth::guard('web')->user()->Courses) >0)
 
-                    <div class="reference">
-                        <h4>References</h4>
+                    <div class="reference padding-60">
+                        <h4>Conferences And Courses
+                            :
+                        </h4>
                         <div class="row">
-                            @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
+                            @foreach(Auth::guard('web')->user()->Courses as $key => $edu)
                                 <div class="col-md-6 col-6">
                                     <div class="border-reference">
-                                        <p>  اسم الشركة : {{$edu->company }}</p>
-                                        <p class="p2-reference"> الاسم :  {{$edu->name}}</p>
                                         <p>
-                                            المسمى الوظيفي : {{$edu->job_title}}
+                                            @if($edu->type == 'course ') Course @else Conference  @endif : {{$edu->name}}
                                         </p>
+                                        <p class="p2-reference"> Date :  {{$edu->date}}</p>
                                         <p>
-                                            رقم الهاتف  :{{$edu->phone}}
+                                            Company name : {{$edu->company}}
                                         </p>
                                     </div>
                                 </div>
@@ -92,6 +93,50 @@
                         </div>
                     </div>
                 @endif
+                @if(count(Auth::guard('web')->user()->Organization) >0)
+
+                    <div class="reference padding-60">
+                        <h4>Organization</h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Organization as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference">
+                                        <p>  Company name : {{$edu->name }}</p>
+                                        <p class="p2-reference"> Date :  {{$edu->date}}</p>
+                                        <p>
+                                             {{$edu->job}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endif
+                @if(count(Auth::guard('web')->user()->Knows) >0)
+
+                    <div class="reference padding-60">
+                        <h4>References</h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference">
+                                        <p>  Company name : {{$edu->company }}</p>
+                                        <p class="p2-reference"> name :  {{$edu->name}}</p>
+                                        <p>
+                                            Job title : {{$edu->job_title}}
+                                        </p>
+                                        <p>
+                                            phone  :{{$edu->phone}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endif
+
             </div>
         </section>
         <section class="col-md-4 col-4 change-row ">
@@ -156,39 +201,39 @@
 
 <script src="{{asset('website/assets/js/bootstrap.min.js')}}" ></script>
 
-<script>
+{{--<script>--}}
 
-    window.onload = function () {
-        var HTML_Width = $("#invoice").width() - 100;
-        var HTML_Height = $("#invoice").height();
-        var top_left_margin = 10;
-        var PDF_Width = HTML_Width+(top_left_margin*2);
-        var PDF_Height = $('#invoice').height()   ;
+{{--    window.onload = function () {--}}
+{{--        var HTML_Width = $("#invoice").width() - 100;--}}
+{{--        var HTML_Height = $("#invoice").height();--}}
+{{--        var top_left_margin = 10;--}}
+{{--        var PDF_Width = HTML_Width+(top_left_margin*2);--}}
+{{--        var PDF_Height = $('#invoice').height()   ;--}}
 
-        var canvas_image_width = HTML_Width;
-        var canvas_image_height = HTML_Height;
-
-
-        var totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
-
-        html2canvas($("#invoice")[0],{allowTaint:true}).then(function(canvas) {
-            canvas.getContext('2d');
-
-            var imgData = canvas.toDataURL("image/jpeg", 1.0);
-            var pdf = new jsPDF("p", "pt",  [595.28, PDF_Height]);
-            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
-
-            nextPage = PDF_Height + 30 ;
-            for (var i = 1; i <= totalPDFPages; i++) {
-                pdf.addPage(PDF_Width, PDF_Height);
-                pdf.addImage(imgData, 'JPG', top_left_margin, -(nextPage*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
-            }
-            pdf.save("CV.pdf");
+{{--        var canvas_image_width = HTML_Width;--}}
+{{--        var canvas_image_height = HTML_Height;--}}
 
 
-        });
-    };
-</script>
+{{--        var totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;--}}
+
+{{--        html2canvas($("#invoice")[0],{allowTaint:true}).then(function(canvas) {--}}
+{{--            canvas.getContext('2d');--}}
+
+{{--            var imgData = canvas.toDataURL("image/jpeg", 1.0);--}}
+{{--            var pdf = new jsPDF("p", "pt",  [595.28, PDF_Height]);--}}
+{{--            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);--}}
+
+{{--            nextPage = PDF_Height + 30 ;--}}
+{{--            for (var i = 1; i <= totalPDFPages; i++) {--}}
+{{--                pdf.addPage(PDF_Width, PDF_Height);--}}
+{{--                pdf.addImage(imgData, 'JPG', top_left_margin, -(nextPage*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);--}}
+{{--            }--}}
+{{--            pdf.save("CV.pdf");--}}
+
+
+{{--        });--}}
+{{--    };--}}
+{{--</script>--}}
 
 
 </body>

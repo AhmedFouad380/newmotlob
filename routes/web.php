@@ -124,7 +124,7 @@ Route::middleware(['company'])->group(function () {
     Route::post('updateCompanyFiles', [\App\Http\Controllers\Admin\CompanyController::class, 'updateCompanyFiles']);
 
     Route::get('PayInvoice/{id}',[\App\Http\Controllers\Front\InvoiceController::class,'index']);
-    Route::get('/ChooseType',[\App\Http\Controllers\Front\AuthController::class,'chooseType'])->name('ChooseType');
+//    Route::get('/ChooseType',[\App\Http\Controllers\Front\AuthController::class,'chooseType'])->name('ChooseType');
 
     Route::post('/updateCompanyType',[\App\Http\Controllers\Front\AuthController::class,'updateCompanyType']);
 

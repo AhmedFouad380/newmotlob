@@ -40,16 +40,16 @@
 
                         <div class="form-group col-md-5 col-6">
                             <label> الاسم  </label>
-                            <input type="text" class="form-control" required name="name" placeholder="اسم ">
+                            <input type="text" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="name" placeholder="اسم ">
                         </div>
 
                         <div class="form-group col-md-5 col-6">
                             <label> المسمى الوظيفي  </label>
-                            <input type="text" class="form-control" required name="job_title" placeholder="المسمى الوظيفي ">
+                            <input type="text" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="job_title" placeholder="المسمى الوظيفي ">
                         </div>
                         <div class="form-group col-md-10 col-12">
                             <label> الشركة</label>
-                            <input type="text" class="form-control" name="company" placeholder="اسم الشركة">
+                            <input type="text" class="form-control"  oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="company" placeholder="اسم الشركة">
                         </div>
 
                     </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group col-md-5 col-6">
                             <label>رقم الهاتف </label>
-                            <input type="number" class="form-control" required name="phone" placeholder="رقم الهاتف">
+                            <input type="number" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="phone" placeholder="رقم الهاتف">
                         </div>
                         <div class="col-md-2 col-12">
                             <button type="submit" class="btn btn-primary btn-theme add" >

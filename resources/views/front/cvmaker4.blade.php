@@ -40,11 +40,11 @@
 
                         <div class="form-group col-md-6 col-6">
                             <label> المسمى الوظيفي  </label>
-                            <input type="text" class="form-control" required name="name" placeholder="المسمى الوظيفي">
+                            <input type="text" class="form-control"  oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="name" placeholder="المسمى الوظيفي">
                         </div>
                         <div class="form-group col-md-6 col-6">
                             <label> الشركة  </label>
-                            <input type="text" class="form-control" required name="company" placeholder="الشركة">
+                            <input type="text" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="company" placeholder="الشركة">
                         </div>
 
                     </div>
@@ -52,7 +52,7 @@
 
                         <div class="form-group col-md-6 col-6">
                             <label> المجال  </label>
-                            <select class="form-control" name="category_id" id="category_id">
+                            <select class="form-control"oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required   name="category_id" id="category_id">
                                 @foreach(\App\Models\ExperienceCategory::where('is_active','active')->get() as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
@@ -60,19 +60,19 @@
                         </div>
                         <div class="form-group col-md-6 col-6">
                             <label> التخصص  </label>
-                            <select class="form-control" id="specialization_id" name="specialization_id">
+                            <select oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  class="form-control" id="specialization_id" name="specialization_id">
                             </select>
                         </div>
 
                         <div class="form-group col-md-12 col-12">
                             <label> الوصف الوظيفي  </label>
-                            <textarea class="form-control" name="description" rows="4"></textarea>
+                            <textarea oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  class="form-control" id="editor" name="description" rows="4"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4 col-6">
                             <label>تاريخ البدأ</label>
-                            <input type="date" class="form-control" required name="start_date" placeholder="تاريخ البدأ">
+                            <input type="date" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="start_date" placeholder="تاريخ البدأ">
                         </div>
 
                         <div class="form-group col-md-4 col-6">
@@ -89,7 +89,7 @@
                     <div class="row">
                         <div class="form-group col-md-4 col-6">
                             <label>  الدولة </label>
-                            <select class="form-control" id="country3" name="country_id">
+                            <select class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  id="country3" name="country_id">
                                 <option>اختر </option>
                                 @inject('Countries','App\Models\Country')
                                 @foreach($Countries->where('is_active','active')->get() as $Country)
@@ -99,14 +99,14 @@
                         </div>
                         <div class="form-group col-md-4 col-6">
                             <label>  المحافظة</label>
-                            <select class="form-control" required id="city3" name="city_id">
+                            <select class="form-control"  oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  id="city3" name="city_id">
 
                             </select>
                         </div>
                         <div class="form-group col-md-4 col-6">
                             <div class="form-group">
                                 <label for="state" >المركز *</label>
-                                <select class="form-control wizard-required" id="state3" name="state_id">
+                                <select class="form-control wizard-required" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  id="state3" name="state_id">
                                 </select>
                                 <div class="wizard-form-error"></div>
                             </div>
@@ -183,6 +183,12 @@
 
 @endsection
 @section('js')
+    <script src="https://cdn.ckeditor.com/4.18.0/basic/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'editor' ).config.contentsLangDirection = 'rtl';
+
+    </script>
+
     <script type="text/javascript">
 
         $(".delete").on("click", function () {

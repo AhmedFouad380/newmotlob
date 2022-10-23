@@ -112,7 +112,7 @@ class AuthController extends Controller
 
         Auth::login($data);
 
-        return back()->with('messageSuccess','تم تسجيل الحساب بنجاح   ');
+        return redirect('cv-maker')->with('messageSuccess','تم تسجيل الحساب بنجاح   ');
     }
 
     public function userProfile($id = null){
@@ -139,6 +139,11 @@ class AuthController extends Controller
         $data = Company::find(Auth::guard('company')->id());
         if($request->type == 'employment'){
             $data->is_active='inactive';
+            $data->company_type=$request->type;
+            $data->save();
+
+            return redirect('/inactive')->with('messageSuccess', 'تم العملية  بنجاح الرجاء استكمال البيانات  ');;
+
         }else{
             $data->is_active='active';
 
@@ -146,7 +151,7 @@ class AuthController extends Controller
         $data->company_type=$request->type;
         $data->save();
 
-        return redirect('/')->with('messageSuccess', 'تم العملية  بنجاح   ');;
+        return redirect('/')->with('messageSuccess', 'تم العملية  بنجاح   ');
 
     }
 }

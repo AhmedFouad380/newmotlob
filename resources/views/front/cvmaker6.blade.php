@@ -40,7 +40,7 @@
 
                         <div class="form-group col-md-12 col-12">
                             <label> اللغة   </label>
-                            <select class="form-control" name="lang_id" >
+                            <select class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  name="lang_id" >
                                 @foreach(\App\Models\Lang::where('is_active','active')->get() as $lang)
                                     <option value="{{$lang->id}}">{{$lang->name}}</option>
                                 @endforeach
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group col-md-12 col-12">
                             <label>  المستوى </label>
-                            <select name="type" class="form-control">
+                            <select name="type" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required >
                                 <option value="excellent" >ممتاز </option>
                                 <option value="very_good">جيد جدا </option>
                                 <option  value="good">جيد </option>

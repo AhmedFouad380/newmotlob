@@ -39,9 +39,9 @@ class PaymentController extends Controller
             $shipping = 0;
             $cartTotal = 10;
             $redirectUrl = array(
-                "successUrl" => "http://mattlob.wessalegy.com/SuccessPayment?order_id=".$payment->id,
-                "failUrl" => "http://mattlob.wessalegy.com/RejectPayment?order_id=".$payment->id,
-                "pendingUrl" => "http://mattlob.wessalegy.com/PendingPayment?order_id=".$payment->id
+                "successUrl" => "https://mattlob.com/SuccessPayment?order_id=".$payment->id,
+                "failUrl" => "https://mattlob.com/RejectPayment?order_id=".$payment->id,
+                "pendingUrl" => "https://mattlob.com/PendingPayment?order_id=".$payment->id
 
             );
 
@@ -184,9 +184,9 @@ class PaymentController extends Controller
             $shipping = 0;
             $cartTotal = $package->price;
             $redirectUrl = array(
-                "successUrl" => "http://mattlob.wessalegy.com/SuccessCompanyPayment?order_id=".$payment->id,
-                "failUrl" => "http://mattlob.wessalegy.com/RejectCompanyPayment?order_id=".$payment->id,
-                "pendingUrl" => "http://mattlob.wessalegy.com/PendingCompanyPayment?order_id=".$payment->id
+                "successUrl" => "https://mattlob.com/SuccessCompanyPayment?order_id=".$payment->id,
+                "failUrl" => "https://mattlob.com/RejectCompanyPayment?order_id=".$payment->id,
+                "pendingUrl" => "https://mattlob.com/PendingCompanyPayment?order_id=".$payment->id
 
             );
 

@@ -127,7 +127,7 @@
                             <div class="row">
 
                                 <div class="col-md-12 col-12 col-lg-12">
-                                    <p class="text5">        {!! Auth::guard('web')->user()->info->description !!}</p>
+                                    <p class="text5">        {!! Auth::guard('web')->user()->info->skills !!}</p>
                                 </div>
                             </div>
                         </div>

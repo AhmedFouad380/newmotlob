@@ -33,7 +33,6 @@
                         <span class="name-span">   {{Auth::guard('web')->user()->info->lastname}} </span></h2>
                     <span class="block-span-resume3">                                {{Auth::guard('web')->user()->info->job_title}}
 </span>
-                    {!! Auth::guard('web')->user()->info->description !!}
 
                 </div>
             </div>
@@ -60,8 +59,24 @@
     <section class="row">
         <section class="col-md-8 col-8">
             <div class="parent-divs">
-                <div class="work-experience">
-                    <h4>الخبرات</h4>
+                <div class="work-experience" style="width: 95%;border-bottom: 2px solid #354251;padding-bottom: 20px;">
+                    <h4>الهدف المهني :</h4>
+
+                    <div class=" experience-resume3">
+                        <div class="row">
+                            <div class="col-md-9 col-9">
+                                <div>
+                                    <h6 class="H6">                         {!! Auth::guard('web')->user()->info->description !!}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="work-experience" style="width: 95%;border-bottom: 2px solid #354251;padding-bottom: 20px;">
+                    <h4>الخبرات :</h4>
                     @foreach(Auth::guard('web')->user()->Experience as $key => $edu)
 
                         <div class=" experience-resume3">
@@ -82,14 +97,14 @@
                     @endforeach
 
                 </div>
-                <div class="work-experience">
-                    <h4>المهارات</h4>
+                <div class="work-experience" style="width: 95%;border-bottom: 2px solid #354251;padding-bottom: 20px;">
+                    <h4>المهارات :</h4>
 
                         <div class=" experience-resume3">
                             <div class="row">
                                 <div class="col-md-9 col-9">
                                     <div>
-                                        <h6 class="H6">                         {!! Auth::guard('web')->user()->info->description !!}
+                                        <h6 class="H6">                         {!! Auth::guard('web')->user()->info->skills !!}
                                         </h6>
                                     </div>
                                 </div>
@@ -97,10 +112,37 @@
                         </div>
 
                 </div>
-                @if(count(Auth::guard('web')->user()->Knows) >0)
+                @if(count(Auth::guard('web')->user()->Courses) >0)
 
-                    <div class="work-experience">
-                        <h4> المعرفيين
+                    <div class="reference4  " style="width: 95%;border-bottom: 2px solid #354251;padding-bottom: 20px;">
+                        <h4>الدورات و المؤتمرات
+                            :
+                        </h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Courses as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference4" style="
+    border-right: 2px solid #354251; margin-right: 10px;
+}">
+                                        <p style="    margin-right: 14px;">
+                                            @if($edu->type == 'course ') الدورة @else المؤتمر  @endif : {{$edu->name}}
+                                        </p>
+                                        <p style="    margin-right: 14px;" class="p2-reference"> التاريخ :  {{$edu->date}}</p>
+                                        <p style="    margin-right: 14px;">
+                                            الشركة  : {{$edu->company}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endif
+
+            @if(count(Auth::guard('web')->user()->Knows) >0)
+
+                    <div class="work-experience" >
+                        <h4> المعرفيين :
                         </h4>
                         @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
 
@@ -109,13 +151,13 @@
 
                                     <div class="col-md-9 col-9">
                                         <div>
-                                            <h6 class="H6"> Name: {{$edu->name}}</h6>
-                                            <h6 Class="H6">  company name : {{$edu->company}}</h6>
+                                            <h6 class="H6"> الاسم: {{$edu->name}}</h6>
+                                            <h6 Class="H6">  الشركة : {{$edu->company}}</h6>
                                             <h6 Class="H6"> {{$edu->description}}
                                             </h6>
-                                            <h6 Class="H6">  job title : {{$edu->job_title}}
+                                            <h6 Class="H6">  المسمى الوظيفي : {{$edu->job_title}}
                                             </h6>
-                                            <h6 Class="H6">   phone  :{{$edu->phone}}
+                                            <h6 Class="H6">   رقم الهاتف  :{{$edu->phone}}
                                             </h6>
                                         </div>
                                     </div>
@@ -132,7 +174,7 @@
         <section class="col-md-4 col-4">
             <div class="pesronal-data">
                 <div class="education3">
-                    <h4>التعليم</h4>
+                    <h4>التعليم :</h4>
                     @foreach(Auth::guard('web')->user()->education as $key => $edu)
 
                         <div class="enter-major">
@@ -145,7 +187,7 @@
 
                 </div>
                 <div class="preference3">
-                    <h4>اللغات</h4>
+                    <h4>اللغات :</h4>
                     @inject('lang','App\Models\Lang')
                     @foreach(Auth::guard('web')->user()->LangRelation as $key => $edu)
 
@@ -157,11 +199,11 @@
 
                 </div>
                 <div class="hobbies">
-                    <h4>المنظمات</h4>
+                    <h4>المنظمات :</h4>
                     <div class="row">
                         @foreach(Auth::guard('web')->user()->Organization as $key => $edu)
 
-                            <div class="col-4 col-md-4">
+                            <div class="col-12 col-md-12">
                                 <div>{{$edu->name}}</div>
                             </div>
 

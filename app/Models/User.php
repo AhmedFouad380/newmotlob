@@ -114,4 +114,5 @@ class User extends Authenticatable
     public function Jobs(){
         return $this->belongsToMany(Job::class,'job_requests','user_id','job_id');
     }
+
 }

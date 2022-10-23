@@ -152,29 +152,75 @@
 
 
                 </div>
-                @if(count(Auth::guard('web')->user()->Knows) >0)
 
-                    <div class="reference4">
-                        <h4>reference</h4>
+                @if(count(Auth::guard('web')->user()->Courses) >0)
+
+                    <div class="reference4 resume4-bottom ">
+                        <h4>Conferences And Courses
+                            :
+                        </h4>
                         <div class="row">
-                            @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
+                            @foreach(Auth::guard('web')->user()->Courses as $key => $edu)
                                 <div class="col-md-6 col-6">
-                                    <div class="border-reference reference4-lastspan ">
-                                        <span>  company name : {{$edu->company }}</span>
-                                        <span class="p2-reference"> name :  {{$edu->name}}</span>
-                                        <span>
-                                        job title : {{$edu->job_title}}
-                                    </span>
-                                        <span>
-                                        phone  :{{$edu->phone}}
-                                    </span>
+                                    <div class="border-reference4">
+                                        <p>
+                                            @if($edu->type == 'course ') Course @else Conference  @endif : {{$edu->name}}
+                                        </p>
+                                        <p class="p2-reference"> Date :  {{$edu->date}}</p>
+                                        <p>
+                                            Company  : {{$edu->company}}
+                                        </p>
                                     </div>
                                 </div>
                             @endforeach
 
                         </div>
                     </div>
-                    @endif
+                @endif
+                @if(count(Auth::guard('web')->user()->Organization) >0)
+
+                    <div class="reference4 resume4-bottom">
+                        <h4>Organization</h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Organization as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference4">
+                                        <p>  Company  : {{$edu->name }}</p>
+                                        <p class="p2-reference"> Date :  {{$edu->date}}</p>
+                                        <p>
+                                            {{$edu->job}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endif
+                @if(count(Auth::guard('web')->user()->Knows) >0)
+
+                    <div class="reference4 resume4-bottom">
+                        <h4>References</h4>
+                        <div class="row">
+                            @foreach(Auth::guard('web')->user()->Knows as $key => $edu)
+                                <div class="col-md-6 col-6">
+                                    <div class="border-reference4">
+                                        <p>  Company  : {{$edu->company }}</p>
+                                        <p class="p2-reference"> name :  {{$edu->name}}</p>
+                                        <p>
+                                            Job title : {{$edu->job_title}}
+                                        </p>
+                                        <p>
+                                            phone  :{{$edu->phone}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endif
+
             </div>
 
         </div>

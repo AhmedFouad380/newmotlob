@@ -31,10 +31,10 @@
     <section class="container">
         <ul class="nav nav-tabs " id="myTab" role="tablist">
             <li style=" width:50%; padding: 10px" role="presentation">
-                <button  style="border: none;margin-left: 10px;" class="nav-link3 faq-button active item active-item"  data-id="home-tab"  data-bs-toggle="tab" data-bs-target="#private" type="button" role="tab" aria-controls="home" aria-selected="true">شركات خاصة  </button>
+                <button  style="border: none;margin-left: 10px;" class="nav-link3 faq-button active item active-item"  data-id="home-tab"  data-bs-toggle="tab" data-bs-target="#private" type="button" role="tab" aria-controls="home" aria-selected="true">موقع اعلانات عن وظائف   </button>
             </li>
             <li  style=" width:50%; padding: 10px" role="presentation">
-                <button style="border: none;" class="nav-link3 item  faq-button"  id="profile-tab" data-bs-toggle="tab" data-bs-target="#employment" type="button" role="tab" aria-controls="profile" aria-selected="false">شركات توظيف </button>
+                <button style="border: none;" class="nav-link3 item  faq-button"  id="profile-tab" data-bs-toggle="tab" data-bs-target="#employment" type="button" role="tab" aria-controls="profile" aria-selected="false">التعامل كشركة توظيف  </button>
             </li>
 
         </ul>

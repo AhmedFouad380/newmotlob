@@ -49,32 +49,32 @@
                         </div>
                         <div class="form-group col-md-4 col-6">
                             <label> الاسم  </label>
-                            <input type="text" class="form-control" required name="name" placeholder="اسم الجامعة- مدرسة - معهد">
+                            <input type="text" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )" required name="name" placeholder="اسم الجامعة- مدرسة - معهد">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4 col-6">
                             <label>الموقع</label>
-                            <input type="text" class="form-control" required name="location" placeholder="الموقع">
+                            <input type="text" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )" required name="location" placeholder="الموقع">
                         </div>
 
                         <div class="form-group col-md-4 col-6">
                             <label>المؤهل</label>
-                            <input type="text" class="form-control" name="qualification" placeholder="المؤهل">
+                            <input type="text" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required name="qualification" placeholder="المؤهل">
                         </div>
                         <div class="form-group col-md-4 col-12 ">
                             <label>مجال الدراسة</label>
-                            <input type="text" class="form-control" name="area" placeholder="مجال الدراسة">
+                            <input type="text" class="form-control" oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required name="area" placeholder="مجال الدراسة">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4 col-6">
                             <label> تاريخ التخرج </label>
-                            <input type="date" class="form-control" name="graduation_date">
+                            <input type="date" class="form-control " oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"   title="هذا الحقل مطلوب" id="graduation_date" name="graduation_date">
                         </div>
                         <div class="form-group col-md-4 col-6">
-                            <label class="checkbox">
-                                <input type="checkbox"> لا زلت أدرس إلى الآن
+                            <label class="checkbox" >
+                                <input type="checkbox"  class="still" > لا زلت أدرس إلى الآن
                             </label>
 
                         </div>
@@ -114,13 +114,13 @@
                             <div class="col-md-4 ">
                                 <div class="data">
                                     <i class="fa fa-trash-o delete" data-id="{{$data->id}}" aria-hidden="true"></i>
-                                     {{$data->qualification}}
+                                    كلية      {{$data->qualification}}
                                     <br>
-                                    {{$data->area}}
+                                   قسم  {{$data->area}}
                                     <br>
                                     {{$data->name}}
-                                    <br>المؤهل
-                                    <br> مجال الدراسة :
+                                    <br>
+                                    {{$data->location}}
                                     <br>لسنة :{{$data->graduation_date}}
                                     {{--                                                 <i class="fa fa-pencil-square-o edit" data-id="{{$data->id}}" aria-hidden="true"></i>--}}
                                 </div>
@@ -149,7 +149,14 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-
+        $('.still').on('click',function () {
+            if($(this).is(':checked')){
+                document.getElementById('graduation_date').disabled='true';
+                document.getElementById('graduation_date').value='';
+            }else{
+                document.getElementById('graduation_date').disabled=false;
+            }
+        })
         $(".delete").on("click", function () {
             var dataList = $(this).data('id');
 

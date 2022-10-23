@@ -35,11 +35,7 @@
                         <h1> {{Auth::guard('web')->user()->info->firstname}}   {{Auth::guard('web')->user()->info->lastname}}</h1>
                         <span>   {{Auth::guard('web')->user()->info->job_title}} </span>
                     </div>
-                    <div class="resume5-data3">
-                        <h6>about me</h6>
-                        <span class="line5"><span class="line55"></span></span>
-                        <p> {!! Auth::guard('web')->user()->info->description !!}</p>
-                    </div>
+
                     <div class="resume5-data3 resume-5contact">
                         <h6>contact</h6>
                         <span class="line5"><span class="line55"></span></span>
@@ -79,6 +75,21 @@
         <div class="col-lg-8 col-md-8 col-8 change-row">
             <div class="resume5-right resume5-right2">
                 <div class="resume5-data22">
+                    <div class="resume5-education">
+                        <h2 class="experience5-h2">About me</h2>
+                        <div class="line-gray"><div class="line-blue"></div></div>
+                        <br>
+
+                        <div class="width-5">
+                            <div class="row">
+                                <div class="col-md-12 col-12 col-lg-12">
+                                    <p class="text5">        {!! Auth::guard('web')->user()->info->description !!}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                     <div class="resume5-experience">
                         <h2 class="experience5-h2">experience</h2>
                         <div class="line-gray"><div class="line-blue"></div></div>
@@ -127,7 +138,7 @@
                                 <div class="row">
 
                                     <div class="col-md-12 col-12 col-lg-12">
-                                        <p class="text5">        {!! Auth::guard('web')->user()->info->description !!}</p>
+                                        <p class="text5">        {!! Auth::guard('web')->user()->info->skills !!}</p>
                                     </div>
                                 </div>
                             </div>
@@ -166,6 +177,31 @@
                         </div>
 
                     </div>
+                    <Br>
+                    @if(count(Auth::guard('web')->user()->Courses) >0)
+
+                    <div class="resume5-hobbies">
+                        <h2 class="experience5-h2">Organization</h2>
+                        <div class="line-gray"><div class="line-blue"></div></div>
+                        <div class="hobbies5">
+                            <div class="row">
+                                @foreach(Auth::guard('web')->user()->Courses as $key => $edu)
+                                    <div class="col-md-6 col-6 col-lg-6">
+                                        <div class="text-hobbies"> <span class="dott55"></span>
+                                            @if($edu->type == 'course ') Course @else Conference  @endif : {{$edu->name}}
+                                        </div>
+                                        <div class="text-hobbies"> <span class="dott55"></span>Date :  {{$edu->date}}</div>
+                                        <div class="text-hobbies"> <span class="dott55"></span>
+                                            Company  : {{$edu->company}}
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+
+                    </div>
+                        @endif
 
                 </div>
             </div>

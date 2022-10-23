@@ -44,6 +44,7 @@ class PagesController extends Controller
                 $info->email = Auth::guard('web')->user()->email;
                 $info->birth_date = $request->date;
                 $info->address = $request->address;
+                $info->address2 = $request->address2;
                 $info->image = $request->image;
                 $info->country_id = $request->country_id;
                 $info->city_id = $request->city_id;
@@ -58,6 +59,7 @@ class PagesController extends Controller
                 $info->email = Auth::guard('web')->user()->email;
                 $info->birth_date = $request->date;
                 $info->address = $request->address;
+                $info->address2 = $request->address2;
                 $info->country_id = $request->country_id;
                 $info->city_id = $request->city_id;
                 $info->image = $request->image;
@@ -278,6 +280,9 @@ class PagesController extends Controller
 
     public function storeexperience(Request $request)
     {
+        if($request->start_date > $request->end_date){
+            return back()->with('messageError', 'الرجاء التاكد من التاريخ ');
+        }
 
         $data = new Experience();
         $data->name = $request->name;

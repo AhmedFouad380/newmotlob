@@ -84,19 +84,17 @@
                 </div>
                 <div class="work-experience">
                     <h4>المهارات</h4>
-                    @foreach(Auth::guard('web')->user()->Experience as $key => $edu)
 
                         <div class=" experience-resume3">
                             <div class="row">
                                 <div class="col-md-9 col-9">
                                     <div>
-                                        <h6 class="H6">                         {!! Auth::guard('web')->user()->info->description !!}
+                                        <h6 class="H6">                         {!! Auth::guard('web')->user()->info->skills !!}
                                         </h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
 
                 </div>
                 @if(count(Auth::guard('web')->user()->Knows) >0)

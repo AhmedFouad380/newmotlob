@@ -40,18 +40,26 @@
                     <div class="row">
                         <div class="col-md-2 col-2">
                             <div class="icon-blue">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <i class="fa fa-user icon-2 " aria-hidden="true"></i>
+                                <i class="fa fa-phone icon-2" aria-hidden="true"></i>
                                 <i class="fa fa-envelope icon-2" aria-hidden="true"></i>
-                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <i class="fa fa-home icon-2 " aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="col-md-10 col-10 ">
                             <div>
+                                <p class="p">{{ Auth::guard('web')->user()->birth_date }}</p>
                                 <p class="p">{{Auth::guard('web')->user()->info->phone}}</p>
                                 <p class="p">{{Auth::guard('web')->user()->info->email}}</p>
-                                <p class="p">{{Auth::guard('web')->user()->info->City->name}} -
-                                    {{Auth::guard('web')->user()->info->Country->name}}</p>
-                            </div>
+                                <p class="p">
+                                    {{Auth::guard('web')->user()->info->Country->name}}  -
+                                    {{Auth::guard('web')->user()->info->City->name}}
+                                </p>
+                                <p class="p">
+                                    -{{Auth::guard('web')->user()->State->name}}
+                                    -{{Auth::guard('web')->user()->Village->name}}
+
+                                </p>                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,7 +183,24 @@
                         @endforeach
                     </div>
                 @endif
-                @if(count(Auth::guard('web')->user()->Knows) >0)
+                @if(count(Auth::guard('web')->user()->Organization) >0)
+                    <div class="experience">
+                        <h4>Organizations :</h4>
+                        @foreach(Auth::guard('web')->user()->Organization as $key => $edu)
+
+                            <div>
+                                <span class="uppercase-span">
+                                    {{$edu->name}}
+                                    <br>
+                                    <b class="captalize-span">{{\Carbon\Carbon::parse($edu->date)->format('Y-m')}}</b>
+                                </span>
+                                <span class="light-size">{{$edu->job}}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
+            @if(count(Auth::guard('web')->user()->Knows) >0)
                     <div class="interests">
                         <h4>Acquaintances
                             :

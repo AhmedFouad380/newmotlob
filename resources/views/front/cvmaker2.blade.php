@@ -37,7 +37,7 @@
                     <p>قم باضافة غايتك و هدفك من انشاء هذه السيرة الذاتية  </p>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <textarea rows="5" id="editor1"  required  class="form-control" name="description">
+                            <textarea rows="5" id="editor1"  oninvalid="this.setCustomValidity('هذا الحقل مطلوب' )"  required  class=" .cke_rtl form-control" name="description">
                                 @if(Auth::guard('web')->user()->info->description)
                                     {{Auth::guard('web')->user()->info->description}}
                                 @else
@@ -73,7 +73,8 @@
 @section('js')
     <script src="https://cdn.ckeditor.com/4.18.0/basic/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'editor1' );
+        CKEDITOR.replace( 'editor1' ).config.contentsLangDirection = 'rtl';
+
     </script>
     <script>
         $('.submit').click(function () {

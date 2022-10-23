@@ -66,32 +66,11 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-8 col-11 cv-maker6" id="template_view">
+        <div class="col-md-9 col-12 cv-maker6" id="template_view">
 
         </div>
 
 
-        <div class="col-md-1 col-11 cv-print">
-            @if(\App\Models\Payment::where('user_id',Auth::guard('web')->id())->where('states','payed')->count() > 0)
-                <form action="{{url('createPDF')}}" method="get">
-                    <input id="temp_id" name="id" type="hidden" >
-                    <div class='form-group'>
-                        <label >اللغة </label>
-                        <select name="lang" class="form-control">
-                            <option value="ar">اللغة العربية</option>
-                            <option value="en">اللغة الانجليزية</option>
-                        </select>
-                    </div>
-                    <button   type="submit" class="btn btn-primary btn-theme download" >
-                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                        تنزيل كـ pdf
-                    </button>
-
-                </form>
-            @endif
-
-
-        </div>
 
 
 
@@ -117,12 +96,32 @@
                     @endforeach
                 </div>
             </div>
+
             <div class="col-md-12 col-11" style="background:#FFF">
                 <div class="save">
+                    @if(\App\Models\Payment::where('user_id',Auth::guard('web')->id())->where('states','payed')->count() > 0)
+                        <form action="{{url('createPDF')}}" method="get">
+                            <input id="temp_id" name="id" type="hidden" >
+                            <div class='form-group'>
+                                <label >اللغة </label>
+                                <select name="lang" class="form-control" st>
+                                    <option value="ar">اللغة العربية</option>
+                                    <option value="en">اللغة الانجليزية</option>
+                                </select>
+                            </div>
+                            <button   type="submit" class="btn btn-primary btn-theme download" >
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                تنزيل كـ pdf
+                            </button
+
+                        </form>
+
+                    @else
                     @if(\App\Models\Information::where('user_id',Auth::guard('web')->id())->count() > 0)
                     <a type="button" class="btn btn-primary btn-theme" href="{{url('Packages')}}" style="font-size: 13px">
                         حفظ و دفع
                     </a>
+                    @endif
                     @endif
                     {{--                                 <div class="clear"></div>--}}
 

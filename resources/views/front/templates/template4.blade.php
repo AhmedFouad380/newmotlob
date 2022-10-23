@@ -141,7 +141,7 @@
                 <div class="profile4 resume4-bottom">
                     <h4>المهارات</h4>
                     <p class="p44">
-                        {!! Auth::guard('web')->user()->info->description !!}
+                        {!! Auth::guard('web')->user()->info->skills !!}
                     </p>
 
 

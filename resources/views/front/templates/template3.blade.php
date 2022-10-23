@@ -58,17 +58,7 @@
                         <p>{{$edu->description}}.</p>
                     </div>
                     @endforeach
-                    <div>
-                                <span class="uppercase-span">
-                                    senior ux designer -
-                                    <b class="captalize-span">2016</b>
-                                </span>
-                        <span class="light-size">company name / location</span>
-                        <p>Lorem ipsum dolor sit y na amet consectetur adipisicing elit
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
+
                 </div>
                 @endif
                 @if(count(Auth::guard('web')->user()->Knows) >0)
